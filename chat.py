@@ -48,6 +48,7 @@ def Recieve(sock:socket, host, port, messages, q):
 					lost_message = messages[message]
 					sock.sendto(lost_message[1].encode('utf-8'), (host, port))
 
+				check_messages(messages, sock, host, port, int(templist[1]))
 				templist = message.split('/')
 				temp = templist[1]
 				now = str(templist[2])
@@ -72,22 +73,12 @@ def print_chat(messages):
 		temp_content = a[1].split('/')
 		print(temp_content[0])
 
-def check_messages(messages, sock, host, port):
-	while True:
-		time.sleep(1)
-		length = len(messages)
-		a = 0
-		temp = ()
-		while a < length:
-			temp = messages[a]
-			if a == int(temp[0]):
-				continue
-			else:
-				print("Some messages were lost")
-				data = '/' + str(counter)
-				sock.sendto(data.encode('utf-8'), (host, port))
+def check_messages(messages, sock, host, port, count):
+	if ((count - messages[-1]) != 1):
+		print("Some messages were lost")
+		data = '/' + str(counter) + "Some of your messages were lost"
+		sock.sendto(data.encode('utf-8'), (host, port))
 
-			a += 1
 
 if __name__ == '__main__':
 	messages = []
@@ -111,5 +102,4 @@ if __name__ == '__main__':
 		Recieve = threading.Thread(target=Recieve, args=(sock, host, port2, messages, queue, ))
 		Send.start()
 		Recieve.start()
-		check_messages(messages, sock, host, port2)
 
