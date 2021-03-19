@@ -35,6 +35,9 @@ def Send(name, sock:socket, host, port2, messages, q):
 
 def Recieve(sock:socket, host, port, messages, q):
 	templist = list()
+	confirm = ''
+	first = False
+	second = False
 	while True:
 		try:
 			data,addr = sock.recvfrom(1024)
@@ -42,20 +45,28 @@ def Recieve(sock:socket, host, port, messages, q):
 			if data:
 				#temp = data.decode('utf-8')
 				message = data.decode('utf-8')
+				#print(message)
 				if message[0] == '/':
 					print("Some messages were lost")
 					message = message.replace('/', '')
 					lost_message = messages[message]
 					sock.sendto(lost_message[1].encode('utf-8'), (host, port))
 
-				check_messages(messages, sock, host, port, int(templist[1]))
+				elif message[0] == '#':
+					print("Your message was succesfully recieved")
+					templist = message.split('/')
+					confirm = messages[int(templist[1])]
+					confirm = confirm + ('r', )
+					messages[int(templist[1])] = confirm
+				
 				templist = message.split('/')
 				temp = templist[1]
+				message_confirmation(messages, sock, host, port, int(temp))
+				print(messages)
 				now = str(templist[2])
 				mess = (temp, message, now)
 				messages.append(mess)
 				print_chat(messages)
-				#print(mess)
 				counter = int(templist[1]) + 1
 				if q.empty() == False:
 					q.get()
@@ -77,6 +88,23 @@ def check_messages(messages, sock, host, port, count):
 	if ((count - messages[-1]) != 1):
 		print("Some messages were lost")
 		data = '/' + str(counter) + "Some of your messages were lost"
+		sock.sendto(data.encode('utf-8'), (host, port))
+
+def message_confirmation(messages, sock, host, port, count):
+	first = False
+	second = False
+	if not messages:
+		if count == 0:
+			first = True
+	
+	else:
+		temp = messages[-1]
+		confirm = int(temp[0])
+		if count - confirm == 1:
+			second = True
+
+	if first or second:
+		data = '#' + "Your message was successfully delivered" + '/' + str(count)
 		sock.sendto(data.encode('utf-8'), (host, port))
 
 
