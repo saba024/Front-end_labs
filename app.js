@@ -46,3 +46,21 @@ modal1Close.addEventListener('click', function(){
 	tabs3.classList.remove('tabs_unactive');
 	tabs4.classList.remove('tabs_unactive');
 });
+
+
+function openOption(evt, optionName) {
+  let i, tabs__block, tabs_item;
+
+  tabs__block = document.getElementsByClassName("tabs__block");
+  for (i = 0; i < tabs__block.length; i++) {
+    tabs__block[i].style.display = "none";
+  }
+
+  tabs_item = document.getElementsByClassName("tabs_item");
+  for (i = 0; i < tabs_item.length; i++) {
+    tabs_item[i].className = tabs_item[i].className.replace(" active", "");
+  }
+
+  document.getElementById(optionName).style.display = "block";
+  evt.currentTarget.className += " active";
+}

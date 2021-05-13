@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" type="text/css" href="/Users/saba/SplitwiseClone/css/style.css">
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
@@ -13,20 +13,8 @@
                     SplitwiseClone
                 </a>
                 <div class="lang-menu">
-					<div class="selected-lang">
-						English
-					</div>
-					<ul>
-						<li>
-							<a class="ru">Russian</a>
-						</li>
-					</ul>
-
-					<ul>
-						<li>
-							<a class="gb">English</a>
-						</li>
-					</ul>
+					<button class="btn"><img src="/Users/saba/SplitwiseClone/img/united-kingdom.svg" alt="en"> English</button>
+					<button class="btn"><img src="/Users/saba/SplitwiseClone/img/russia.svg" alt="ru"> Russian</button>
 				</div>
                 <nav>
                     <a class="nav__link" href="./login.html">Sign In</a>
@@ -62,103 +50,103 @@
 	<div class="content">
 		<div class="tabs">
 			<nav class="tabs__items">
-				<a href="#tab_01" class="tabs_item"><span class="tab_name">Expenses</span></a>
-				<a href="#tab_02" class="tabs_item"><span class="tab_name2">Debts</span></a>
-				<a href="#tab_03" class="tabs_item"><span class="tab_name3">Members</span></a>
-				<a href="#tab_04" class="tabs_item"><span class="tab_name4">Activity</span></a>
+				<button class="tabs_item" onclick="openOption(event, 'tab_01')"><span class="tab_name">Expenses</span></button>
+				<button class="tabs_item" onclick="openOption(event, 'tab_02')"><span class="tab_name2">Debts</span></a>
+				<button class="tabs_item" onclick="openOption(event, 'tab_03')"><span class="tab_name3">Members</span></a>
+				<button class="tabs_item" onclick="openOption(event, 'tab_04')"><span class="tab_name4">Activity</span></a>
 			</nav>
 			<div class="tabs__body">
 				<div id="tab_01" class="tabs__block">
 					<p><button class="add_expense">Add Expenses</button></p>
-					<div class="view_wrap expense-list">
+					<ul class="view_wrap expense-list">
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./food.jpg" alt="food">
+								<img src="/Users/saba/SplitwiseClone/img/food.jpg" alt="food">
 							</div>
 							<div class="vi_right">
 								<p class="title">Burger</p>
 								<div class="expense_amount">50$</div>
-								<img src="./receipt.jpg" alt="receipt">
+								<img src="/Users/saba/SplitwiseClone/img/receipt.jpg" alt="receipt">
 								<p class="content">Bob -----> Greg, Bill</p>
-								<div class="btn_edit">Edit</div>
-								<div class="btn_delete">Delete</div>
+								<button class="btn_edit">Edit</button> 
+								<button class="btn_delete">Delete</button> 
 							</div>
 						</div>
 
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./house.jpg" alt="house">
+								<img src="/Users/saba/SplitwiseClone/img/house.jpg" alt="house">
 							</div>
 							<div class="vi_right">
 								<p class="title">Rent</p>
 								<div class="expense_amount">150$</div>
-								<img src="./receipt.jpg" alt="receipt">
+								<img src="/Users/saba/SplitwiseClone/img/receipt.jpg" alt="receipt">
 								<p class="content">Greg -----> Bob, Bill</p>
-								<div class="btn_edit">Edit</div>
-								<div class="btn_delete">Delete</div>
+								<button class="btn_edit">Edit</button> 
+								<button class="btn_delete">Delete</button> 
 							</div>
 						</div>
-					</div>
+					</ul>
 				</div>
 
 				<div id="tab_02" class="tabs__block">
-					<div class="view_wrap expense-list">
+					<ul class="view_wrap expense-list">
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./person.png" alt="person">
+								<img src="/Users/saba/SplitwiseClone/img/person.png" alt="person">
 							</div>
 							<div class="vi_right">
 								<p class="title">Bill -> Bob</p>
 								<p class="debt_content">$50</p>
-								<div class="btn_edit">Settle Up</div>
+								<button class="btn_edit">Settle Up</button> 
 							</div>
 						</div>
 
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./person.png" alt="person">
+								<img src="/Users/saba/SplitwiseClone/img/person.png" alt="person">
 							</div>
 							<div class="vi_right">
 								<p class="title">Bob -> Greg</p>
 								<p class="debt_content">$150</p>
-								<div class="btn_edit">Settle Up</div>
+								<button class="btn_edit">Settle Up</button> 
 							</div>
 						</div>
 
-					</div>
+					</ul>
 				</div>
 
 				<div id="tab_03" class="tabs__block">
 					<p><button class="add_member">Add Member</button></p>
-					<div class="view_wrap expense-list">
+					<ul class="view_wrap expense-list">
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./person.png" alt="person">
+								<img src="/Users/saba/SplitwiseClone/img/person.png" alt="person">
 							</div>
 							<div class="vi_right">
 								<p class="title">Bob</p>
 								<div class="amount">+50$</div>
 								<p class="content">spent 100$</p>
-								<div class="btn_edit">Edit</div>
-								<div class="btn_delete">Delete</div>
+								<button class="btn_edit">Edit</button> 
+								<button class="btn_delete">Delete</button> 
 							</div>
 						</div>
-					</div>
+					</ul>
 				</div>
 
 				<div id="tab_04" class="tabs__block">
 					<p class="activity">Recent activity</p>
-					<div class="view_wrap expense-list">
+					<ul class="view_wrap expense-list">
 						<div class="view_item">
 							<div class="vi_left" >
-								<img src="./person.png" alt="person">
+								<img src="/Users/saba/SplitwiseClone/img/person.png" alt="person">
 							</div>
 							<div class="vi_right">
 								<p class="title">Bob added expense Burger($50)</p>
 								<p class="content">10.39 05/03/2021</p>
 							</div>
 						</div>
-					</div>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -177,11 +165,11 @@
 					<option value="2">Bill</option>
 				</select>
 			</div>
-			<label for="amount" class="amount">Amount</label>
+			<label class="amount">Amount</label>
 			<input type="value" name="amount" class="amount_input" placeholder="0$">
-			<label for="concept" class="concept">Concept</label>
+			<label class="concept">Concept</label>
 			<input type="text" name="concept" class="concept_input" placeholder="Expense name">
-			<label for="category" class="category">Category</label>
+			<label class="category">Category</label>
 			<div class="category-select" >
 				<select>
 					<option value="0">Food</option>
@@ -189,9 +177,9 @@
 					<option value="2">Tickets</option>
 				</select>
 			</div>
-			<label for="shared" class="shared">Shared</label>
+			<label class="shared">Shared</label>
 			<button class="share_equally">share equally</button>
-			<label for="receipt" class="add_receipt">Add Receipt</label>
+			<label class="add_receipt">Add Receipt</label>
 			<form action="/action_page.php">
 				<input type="file" id="myFile" name="filename" class="file">
 			</form>
@@ -225,14 +213,14 @@
 	<div class="modal1-bg">
 		<div class="member_modal">
 			<h2>Add Member</h2>
-			<label for="member" class="member">Name</label>
+			<label class="member">Name</label>
 			<input type="name" name="member_name" class="name_input" placeholder="Name">
 			<button class="save">Save</button>
 			<span class="modal1-close">X</span>
 		</div>
 	</div>
 
-	<script src="./app.js"></script>
+	<script src="/Users/saba/SplitwiseClone/js/app.js"></script>
 
 </body>
 </html>

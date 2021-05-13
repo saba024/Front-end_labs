@@ -46,76 +46,14 @@ header
 
 }
 
-
-.selected-lang{
-	display: flex;   
-    justify-content: space-between;
-    line-height: 2;
-    cursor: pointer;
-
+.lang-menu .btn{
+	background-color: cornsilk;
+	border: none;
 }
 
-.selected-lang:before{
-	content: '';
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background-image: url("./united-kingdom.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
+.lang-menu .btn:hover{
+	background-color: #e6b8b8; 
 }
-
-.lang-menu ul{
-	margin: 0;
-	padding: 0;
-	background-color: #fff;
-	border: 1px solid #f8f8f8;
-	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-	border-radius: 5px;
-	display: none;
-	
-}
-
-.lang-menu ul li{
-	list-style: none;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-}
-
-.lang-menu ul li a{
-	text-decoration: none;
-    width: 125px;
-    padding: 5px 10px;
-    display: block;
-}
-
-.lang-menu ul li a:before{
-	content: '';
-	display: inline-block;
-	width:32px;
-	height: 32px;
-	margin-right: 10px;
-	vertical-align: middle;
-	
-}
-
-.lang-menu ul li a:hover{
-	background-color: #f2f2f2;
-}
-
-.ru:before{
-	background-image: url("./russia.svg");
-}
-
-.gb:before{
-	background-image: url("./united-kingdom.svg");
-}
-
-.lang-menu:hover ul{
-	display: block;
-}
-
 
 
 body {
@@ -232,6 +170,7 @@ body {
     color: #013220;
     text-decoration: none;
     font-family: cursive;
+    font-size: 16px;
 }
 
 .tab_name, .tab_name2, .tab_name3, .tab_name4{
