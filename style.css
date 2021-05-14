@@ -5,14 +5,6 @@
 	text-decoration: none;
 }
 
-header
-{
-	width: 100%;
-	height: 80px;
-	padding: 10px 0;
-	background-color: #00FF00; 
-}
-
 .header {
     width: 100%;
     top: 0;
@@ -119,21 +111,27 @@ body {
 
 .budget-income-title,
 .budget-expenses-title {
-    float: left;
     font-size: 13px;
     color: #444;
     margin-top: 2px;
 }
 
-.budget-income-value,
-.budget-expenses-value {
+.budget-income-value{
+	position: absolute;
+	right: 10px;
+	top: 60%;
     letter-spacing: 1px;
-    float: left;
+}
+
+.budget-expenses-value {
+	position: absolute;
+	right: 10px;
+	top: 85%;
+    letter-spacing: 1px;
 }
 
 .budget-income-percentage,
 .budget-expenses-percentage {
-    float: left;
     width: 34px;
     font-size: 11px;
     padding: 3px 0;

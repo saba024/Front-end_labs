@@ -34,14 +34,12 @@
 				<div class="budget-income-title">Income</div>
 				<div class="right">
 					<div class="budget-income-value">+50$</div>
-					<div class="budget-income-percentage">40%</div>
 				</div>
 			</div>
 			<div class="budget-expenses">
                     <div class="budget-expenses-title">Expenses</div>
                     <div class="right">
-                        <div class="budget-expenses-value">0$</div>
-                        <div class="budget-expenses-percentage">45%</div>
+                        <div class="budget-expenses-value">150$</div>
                     </div>
             </div>
 		</div>
@@ -59,7 +57,7 @@
 				<div id="tab_01" class="tabs__block">
 					<p><button class="add_expense">Add Expenses</button></p>
 					<ul class="view_wrap expense-list">
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./food.jpg" alt="food">
 							</div>
@@ -71,9 +69,9 @@
 								<button class="btn_edit">Edit</button> 
 								<button class="btn_delete">Delete</button> 
 							</div>
-						</div>
+						</li>
 
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./house.jpg" alt="house">
 							</div>
@@ -85,13 +83,13 @@
 								<button class="btn_edit">Edit</button> 
 								<button class="btn_delete">Delete</button> 
 							</div>
-						</div>
+						</li>
 					</ul>
 				</div>
 
 				<div id="tab_02" class="tabs__block">
 					<ul class="view_wrap expense-list">
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./person.png" alt="person">
 							</div>
@@ -100,9 +98,9 @@
 								<p class="debt_content">$50</p>
 								<button class="btn_edit">Settle Up</button> 
 							</div>
-						</div>
+						</li>
 
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./person.png" alt="person">
 							</div>
@@ -111,7 +109,7 @@
 								<p class="debt_content">$150</p>
 								<button class="btn_edit">Settle Up</button> 
 							</div>
-						</div>
+						</li>
 
 					</ul>
 				</div>
@@ -119,7 +117,7 @@
 				<div id="tab_03" class="tabs__block">
 					<p><button class="add_member">Add Member</button></p>
 					<ul class="view_wrap expense-list">
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./person.png" alt="person">
 							</div>
@@ -130,14 +128,14 @@
 								<button class="btn_edit">Edit</button> 
 								<button class="btn_delete">Delete</button> 
 							</div>
-						</div>
+						</li>
 					</ul>
 				</div>
 
 				<div id="tab_04" class="tabs__block">
 					<p class="activity">Recent activity</p>
 					<ul class="view_wrap expense-list">
-						<div class="view_item">
+						<li class="view_item">
 							<div class="vi_left" >
 								<img src="./person.png" alt="person">
 							</div>
@@ -145,7 +143,7 @@
 								<p class="title">Bob added expense Burger($50)</p>
 								<p class="content">10.39 05/03/2021</p>
 							</div>
-						</div>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -165,21 +163,21 @@
 					<option value="2">Bill</option>
 				</select>
 			</div>
-			<label class="amount">Amount</label>
-			<input type="value" name="amount" class="amount_input" placeholder="0$">
-			<label class="concept">Concept</label>
-			<input type="text" name="concept" class="concept_input" placeholder="Expense name">
-			<label class="category">Category</label>
-			<div class="category-select" >
+			<label class="amount" for="amount">Amount</label>
+			<input type="value" name="amount" class="amount_input" id="amount" placeholder="0$">
+			<label for="concept" class="concept">Concept</label>
+			<input type="text" name="concept" class="concept_input" id="concept" placeholder="Expense name">
+			<label for="category-select" class="category">Category</label>
+			<div class="category-select" id="category-select" >
 				<select>
 					<option value="0">Food</option>
 					<option value="1">Home</option>
 					<option value="2">Tickets</option>
 				</select>
 			</div>
-			<label class="shared">Shared</label>
-			<button class="share_equally">share equally</button>
-			<label class="add_receipt">Add Receipt</label>
+			<label for="shared" class="shared">Shared</label>
+			<button class="share_equally" id="shared">share equally</button>
+			<label for="myFile" class="add_receipt">Add Receipt</label>
 			<form action="/action_page.php">
 				<input type="file" id="myFile" name="filename" class="file">
 			</form>
