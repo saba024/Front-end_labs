@@ -155,7 +155,7 @@
 	<div class="modal-bg">
 		<div class="modal">
 			<h2 class="title">Add new Expense</h2>
-			<label for="name" class="name">Who paid</label>
+			<span class="name">Who paid</span>
 			<div class="name-select" >
 				<select>
 					<option value="0">Greg</option>
@@ -167,19 +167,19 @@
 			<input type="value" name="amount" class="amount_input" id="amount" placeholder="0$">
 			<label for="concept" class="concept">Concept</label>
 			<input type="text" name="concept" class="concept_input" id="concept" placeholder="Expense name">
-			<label for="category-select" class="category">Category</label>
-			<div class="category-select" id="category-select" >
+			<span class="category">Category</span>
+			<div class="category-select">
 				<select>
 					<option value="0">Food</option>
 					<option value="1">Home</option>
 					<option value="2">Tickets</option>
 				</select>
 			</div>
-			<label for="shared" class="shared">Shared</label>
+			<span class="shared">Shared</span>
 			<button class="share_equally" id="shared">share equally</button>
-			<label for="myFile" class="add_receipt">Add Receipt</label>
+			<span class="add_receipt">Add Receipt</span> 
 			<form action="/action_page.php">
-				<input type="file" id="myFile" name="filename" class="file">
+				<input type="file" name="filename" class="file">
 			</form>
 			<button class="save">Save</button>
 			<span class="modal-close">X</span>
