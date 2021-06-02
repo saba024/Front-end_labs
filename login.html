@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title> 
+</head>
+<body>
+	<div class="loginbox">
+		<img src="./img/person.png" alt="" class="avatar">
+		<h1>Login Here</h1>
+		<form method="post" action="main.html">
+			<p>Login</p>
+			<input type="text" name="" placeholder="Enter Username" id="username">
+			<p>Password</p>
+			<input type="password" name="" placeholder="Enter Password" id="password">
+			<input type="submit" name="" value="Sign in" onclick="LogIn()">
+			<a href="#">Lost your password</a><br>
+			<a href="./register.html">Dont have an account</a>
+		</form>
+	</div>
+	<script src="./models/user.js"></script>
+	<script src="./models/member.js"></script>
+	<script src="./js/login.js"></script>
+</body>
+</html>

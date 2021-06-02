@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+	<header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="./index.html" class="header__logo">
+                    SplitwiseClone
+                </a>
+                <div class="lang-menu">
+					<button class="btn" onclick="change_lang()"><img src="./img/united-kingdom.svg" alt="en"> English</button>
+					<button class="btn" onclick="change_lang()"><img src="./img/russia.svg" alt="ru"> Russian</button>
+				</div>
+                <nav id="authorisation">
+                    <a class="nav__link" href="./login.html">Sign In</a>
+                    <a class="nav__link" href="./register.html">Sign Up</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+	<p data-translate="greet" style="text-align: center; margin: 10px;" >To start with splitapp firts sign in </p>
+    <a data-translate="login" style="position: absolute; left: 50%; margin: 10px;" class="nav__link" href="./login.html">Sign In</a>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/translate.js"></script>
+
+</body>
+</html>
+
+
