@@ -13,6 +13,19 @@ let modalClose = document.querySelector('.modal-close');
 let modal1Close = document.querySelector('.modal1-close');
 
 modalBtn.addEventListener('click', function(){
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let members = current_group.members
+	if (members.length < 2) 
+	{
+		alert("Add at least one member to add transaction")
+		return;
+	}
 	modalBg.classList.add('bg-active');
 	tabs.classList.add('tabs_unactive');
 	tabs2.classList.add('tabs_unactive');
@@ -34,7 +47,15 @@ function edit_expense(ind){
 
 function edit_member(ind){
 	let edit_member_index = parseInt(ind[0])
-	members = JSON.parse(localStorage.getItem("members"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let members = current_group.members
+
 	let member_input = document.getElementById("member_input")
 	member_input.setAttribute("placeholder", members[edit_member_index].name)
 	modalBg1.classList.add('bg1-active');
@@ -42,6 +63,7 @@ function edit_member(ind){
 	tabs2.classList.add('tabs_unactive');
 	tabs3.classList.add('tabs_unactive');
 	tabs4.classList.add('tabs_unactive');
+
 }
 
 splitBtn.addEventListener('click', function(){
@@ -94,13 +116,16 @@ function fill_modal(){
 
 	let a = 0
 
-	let members = []
-	let expenses = []
-	let debts = []
-
-	members = JSON.parse(localStorage.getItem("members"))
-	expenses = JSON.parse(localStorage.getItem("expenses"))
-	debts = JSON.parse(localStorage.getItem("debts"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let expenses = current_group.expenses
+	let debts = current_group.debts
+	let members = current_group.members
 
 	for (let member of members){
 		let count = document.getElementById("member-select").childElementCount;
@@ -119,7 +144,7 @@ function fill_modal(){
 			div_radio = document.createElement("div")
 			div_radio.className = "radio"
 			let x = document.createElement("INPUT");
-	  	x.setAttribute("type", "radio");
+	  	x.setAttribute("type", "checkbox");
 	  	x.className = "radio__input"
 	  	x.setAttribute("id", "radio_" + a);
 	  	x.setAttribute("name", member.name);
@@ -144,10 +169,14 @@ function fill_modal(){
 
 function fill_edit_modal(index){
 
-	let expenses = []
-
-	expenses = JSON.parse(localStorage.getItem("expenses"))
-
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let expenses = current_group.expenses
 	console.log(expenses)
 	console.log("index", index)
 	let expense_amount = document.getElementById("amount")
@@ -162,4 +191,3 @@ function fill_edit_modal(index){
 
 	localStorage.setItem("edit_id", JSON.stringify(index));
 }
-

@@ -1,12 +1,15 @@
 function add_expense(){
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let expenses = current_group.expenses
+	let debts = current_group.debts
+	let members = current_group.members
 
-	let members = []
-	let expenses = []
-	let debts = []
-
-	members = JSON.parse(localStorage.getItem("members"))
-	expenses = JSON.parse(localStorage.getItem("expenses"))
-	debts = JSON.parse(localStorage.getItem("debts"))
 	let current_user = JSON.parse(localStorage.getItem("current_user"))
 
 	let edit_index = JSON.parse(localStorage.getItem("edit_id"))
@@ -17,9 +20,13 @@ function add_expense(){
 	let budget_income = parseInt(JSON.parse(localStorage.getItem("budget_income")))
 	let budget_expenses = parseInt(JSON.parse(localStorage.getItem("budget_expenses")))
 
+	let id = 0
+	let id_debt = 0
 
-	let id = expenses[expenses.length - 1].id + 1
-	let id_debt = debts[debts.length - 1].id + 1
+	if (expenses.length > 0){
+		id = expenses[expenses.length - 1].id + 1
+		id_debt = debts[debts.length - 1].id + 1
+	}
 
 	let sel=document.getElementById('member-select').selectedIndex;
 	let options=document.getElementById('member-select').options;
@@ -53,9 +60,16 @@ function add_expense(){
     	if (rad[i].checked) {
       		//alert('Выбран ' + i+' radiobutton');
       		split_users.push(members[i].name)
-      		members[i].budget = members[i].budget - parseInt(document.getElementById("input_" + i).value)
-      		debt_amount.push(parseInt(document.getElementById("input_" + i).value))
-      		sum = sum + parseInt(document.getElementById("input_" + i).value) 
+      		if (document.getElementById("input_" + i).value === ""){
+      			members[i].budget = members[i].budget - parseInt(document.getElementById("input_" + i).placeholder)
+      			debt_amount.push(parseInt(document.getElementById("input_" + i).placeholder))
+      			sum = sum + parseInt(document.getElementById("input_" + i).placeholder)
+      		}
+      		else{
+	      		members[i].budget = members[i].budget - parseInt(document.getElementById("input_" + i).value)
+	      		debt_amount.push(parseInt(document.getElementById("input_" + i).value))
+	      		sum = sum + parseInt(document.getElementById("input_" + i).value) 
+      		}
     	}
   	}
 
@@ -65,7 +79,7 @@ function add_expense(){
   	let getFileUrl = JSON.parse(localStorage.getItem("uploadedUrl"));
   	let receipt = getFileUrl
     if(getFileUrl === ""){
-    	receipt = "./receipt"
+    	receipt = "./img/receipt.jpg"
     	console.log("file is empty")
     }else {
         receipt = getFileUrl
@@ -77,6 +91,7 @@ function add_expense(){
   	{
   		console.log(sum)
   		alert("the inputs are more or less then amount")
+  		return;
   	}
 
   	else{
@@ -101,7 +116,13 @@ function add_expense(){
   			
   			if (split_users[i] == current_user)
   			{
-  				budget_expenses += parseInt(document.getElementById("input_" + i).value)
+  				if (document.getElementById("input_" + i).value === ""){
+  					budget_expenses += parseInt(document.getElementById("input_" + i).placeholder)	
+  				}
+  				
+  				else{
+  					budget_expenses += parseInt(document.getElementById("input_" + i).value)
+  				}
   			}
 
   			counter = false	
@@ -120,9 +141,11 @@ function add_expense(){
 	  	}		
   	}
 
-  	localStorage.setItem("expenses", JSON.stringify(expenses));
-	localStorage.setItem("debts", JSON.stringify(debts));
-	localStorage.setItem("members", JSON.stringify(members));
+  	groups[group_id].expenses = expenses
+  	groups[group_id].debts = debts
+  	groups[group_id].members = members
+
+	localStorage.setItem("group", JSON.stringify(groups));
 	localStorage.setItem("budget_income", JSON.stringify(budget_income));
   	localStorage.setItem("budget_expenses", JSON.stringify(budget_expenses));
   	localStorage.setItem("edit_id", JSON.stringify(""));
@@ -133,7 +156,7 @@ let save_image_button = document.getElementById("add_file")
 
 save_image_button.addEventListener('click', function(){
 	let selectedFile = document.getElementById('myFile').files[0]
-    //if (!selectedFile.type.startsWith('image/')){ return }
+    //if (!selectedFile.type.startsWith('img/')){ return }
     const reader = new FileReader();
     reader.onloadend = () => {
         const base64String = reader.result
@@ -143,21 +166,52 @@ save_image_button.addEventListener('click', function(){
     reader.readAsDataURL(selectedFile);
 });
 
+function split_equally(){
+	let amount_input = document.getElementById('amount');
+	let amount = parseInt(amount_input.value)
+	let rad = document.getElementsByClassName("radio__input")
+	let count = 0
+	for (let i = 0;i < rad.length; i++) {
+    	if (rad[i].checked) {
+      		//alert('Выбран ' + i+' radiobutton');
+      		count = count + 1
+    	}
+  	}
+
+  	//alert(amount)
+
+  	let result = amount / count;
+
+  	alert(result)
+
+  	for (let i = 0;i < rad.length; i++) {
+    	if (rad[i].checked) {
+      		//alert('Выбран ' + i+' radiobutton');
+      		temp = document.getElementById("input_" + i)
+      		temp.setAttribute("placeholder", result)
+    	}
+  	}
+}
+
 function delete_expense(ind){
-	let expenses = []
-	let debts = []
-	let members = []
 	console.log("index",ind)
 	index = parseInt(ind)
 
-	members = JSON.parse(localStorage.getItem("members"))
-	expenses = JSON.parse(localStorage.getItem("expenses"))
-	debts = JSON.parse(localStorage.getItem("debts"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let expenses = current_group.expenses
+	let debts = current_group.debts
+	let members = current_group.members
 	let current_user = JSON.parse(localStorage.getItem("current_user"))
 	let budget_income = JSON.parse(localStorage.getItem("budget_income"))
 	let budget_expenses = JSON.parse(localStorage.getItem("budget_expenses"))
 	for (let i = 0; i < debts.length; i++){
-		if(expenses[index].users.includes(debts[i].name) && debts[i].nameto == expenses[index].name)
+		if(expenses[index].users.includes(debts[i].name) && debts[i].nameto == expenses[index].who_paid)
 		{
 			debts[i].amount -= parseInt(expenses[index].amount)
 		}
@@ -183,33 +237,46 @@ function delete_expense(ind){
 	}
 
 	expenses.splice(expenses.indexOf(expenses[index]), 1)
-	localStorage.setItem("expenses", JSON.stringify(expenses));
-	localStorage.setItem("debts", JSON.stringify(debts));
+	groups[group_id].members = members
+	groups[group_id].debts = debts
+	groups[group_id].expenses = expenses
+	localStorage.setItem("group", JSON.stringify(groups));
 	localStorage.setItem("budget_income", JSON.stringify(budget_income));
 	localStorage.setItem("budget_expenses", JSON.stringify(budget_expenses));
-	localStorage.setItem("members", JSON.stringify(members));
 	window.location.href = "./main.html"
 }
 
 function add_member(){
-	let members = []
-	members = JSON.parse(localStorage.getItem("members"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let members = current_group.members
 	let member_field = document.getElementById("member_input")
 	let member = member_field.value
 	let id_member = members[members.length - 1].id + 1
 	let new_member = new Member(id_member, member, 0, 0)
 	members.push(new_member)
-	localStorage.setItem("members", JSON.stringify(members));
+	groups[group_id].members = members
+	localStorage.setItem("group", JSON.stringify(groups));
 	window.location.href = "./main.html"
 }
 
 function setle_debt(ind){
 	let debt_index = parseInt(ind[0])
 	console.log("index", debt_index)
-	let debts = []
-	let members = []
-	members = JSON.parse(localStorage.getItem("members"))
-	debts = JSON.parse(localStorage.getItem("debts"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let debts = current_group.debts
+	let members = current_group.members
 	let current_user = JSON.parse(localStorage.getItem("current_user"))
 	let budget_income = JSON.parse(localStorage.getItem("budget_income"))
 	let budget_expenses = JSON.parse(localStorage.getItem("budget_expenses"))
@@ -237,20 +304,26 @@ function setle_debt(ind){
 	console.log("new_members", members)
 	console.log("budget_income", budget_income)
 	console.log("budget_expenses", budget_expenses)
-	localStorage.setItem("debts", JSON.stringify(debts));
-	localStorage.setItem("budget_income", JSON.stringify(budget_income));
+	groups[group_id].members = members
+	groups[group_id].debts = debts
+ 	localStorage.setItem("budget_income", JSON.stringify(budget_income));
 	localStorage.setItem("budget_expenses", JSON.stringify(budget_expenses));
-	localStorage.setItem("members", JSON.stringify(members));
+	localStorage.setItem("group", JSON.stringify(groups));
 	window.location.href = "./main.html"
 }
 
 function delete_member(index){
 	let member_index = parseInt(index[0])
-	let members = []
-	let expenses = []
 
-	members = JSON.parse(localStorage.getItem("members"))
-	expenses = JSON.parse(localStorage.getItem("expenses"))
+	let current_group_id = JSON.parse(localStorage.getItem("current_group_id"))
+	let groups = []
+	groups = JSON.parse(localStorage.getItem("group"))
+	console.log("current_group_id", current_group_id)
+	let group_id = parseInt(current_group_id)
+	let current_group = groups[group_id]
+	console.log("current_group", current_group)    
+	let expenses = current_group.expenses
+	let members = current_group.members
 	let delete_mem = false
 
 	for(expense of expenses)
@@ -259,16 +332,16 @@ function delete_member(index){
 		{
 			delete_mem = true
 			alert("Member can not be deleted because it is used in expenses")
-			break;
+			return;
 		}
 	}
 
 	if (!delete_mem){
 		members.splice(members.indexOf(members[member_index]), 1)
 	}
-
-	localStorage.setItem("members", JSON.stringify(members));
-
+	groups[group_id].members = members
+	localStorage.setItem("group", JSON.stringify(groups));
+	window.location.href = "./main.html"
 }
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="./login.css">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Login</title> 
@@ -17,11 +17,15 @@
 			<input type="text" name="" placeholder="Enter Login" id="login">
 			<p>Password</p>
 			<input type="password" name="" placeholder="Enter Password" id="password">
+			<p>Group name</p>
+			<input type="text" name="" placeholder="Enter Group name" id="group_name">
 			<input type="submit" name="" value="Sign Up" onclick="registerUser()">
+			<a href="./login.html">I already have an account</a>
 		</form>
 	</div>
-	<script src="./user.js"></script>
-	<script src="./member.js"></script>
-	<script src="./register.js"></script>
+	<script src="./models/user.js"></script>
+	<script src="./models/member.js"></script>
+	<script src="./models/group.js"></script>
+	<script src="./js/register.js"></script>
 </body>
 </html>

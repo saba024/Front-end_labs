@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
@@ -13,8 +14,8 @@
                     SplitwiseClone
                 </a>
                 <div class="lang-menu">
-					<button class="btn" onclick="change_lang()"><img src="./united-kingdom.svg" alt="en"> English</button>
-					<button class="btn" onclick="change_lang()"><img src="./russia.svg" alt="ru"> Russian</button>
+					<button class="btn" onclick="change_lang()"><img src="./img/united-kingdom.svg" alt="en"> English</button>
+					<button class="btn" onclick="change_lang()"><img src="./img/russia.svg" alt="ru"> Russian</button>
 				</div>
                 <nav id="authorisation">
                     <!--a class="nav__link" href="./login.html">Sign In</a>
@@ -176,7 +177,7 @@
 				</select>
 			</div>
 			<label for="shared" class="shared">Shared</label>
-			<button class="share_equally" id="shared">share equally</button>
+			<button class="share_equally" id="shared" onclick="split_equally()">share equally</button>
 			<label for="myFile" class="add_receipt">Add Receipt</label>
 			<input type="file" id="myFile" name="filename" class="file">
 			<button class="button_file" id="add_file">Save receipt</btn>
@@ -217,15 +218,16 @@
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="./expense.js"></script>
-	<script src="./user.js"></script>
-	<script src="./debt.js"></script>
-	<script src="./member.js"></script>
-	<script src="./main.js"></script>
-	<script src="./translate.js"></script>
-	<script src="./app.js"></script>
-	<script src="./add_expense.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="./models/expense.js"></script>
+	<script src="./models/user.js"></script>
+	<script src="./models/debt.js"></script>
+	<script src="./models/member.js"></script>
+	<script src="./models/group.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/translate.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/add_expense.js"></script>
 
 </body>
 </html>

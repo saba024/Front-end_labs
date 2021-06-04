@@ -19,6 +19,7 @@ async function LogIn(){
         if(user.name == username){
             if(user.password==password){
                 localStorage.setItem("current_user", JSON.stringify(username));
+                localStorage.setItem("current_group_id", JSON.stringify(user.id));
             }
             return
         }
