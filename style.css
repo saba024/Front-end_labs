@@ -445,8 +445,6 @@ body {
 	left: 1px;
 }
 
-
-
 .modal .save{
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -592,7 +590,7 @@ body {
 	position: absolute;
 	top: 77%;
 	right: 100px;
-	background-color: blue; /* Green */
+	background-color: blue;
 	border: none;
 	color: white;
 	padding: 7px 15px;
@@ -601,8 +599,6 @@ body {
 	font-size: 12px;
 	cursor: pointer;
 }
-
-
 
 .member_modal h2{
 	position: absolute;
@@ -713,12 +709,5 @@ body {
 	text-decoration: none;
 	font-size: 12px;
 }
-
-
-
-
-
-
-
 
 

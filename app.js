@@ -42,7 +42,6 @@ function edit_member(ind){
 	tabs2.classList.add('tabs_unactive');
 	tabs3.classList.add('tabs_unactive');
 	tabs4.classList.add('tabs_unactive');
-
 }
 
 splitBtn.addEventListener('click', function(){
@@ -163,3 +162,4 @@ function fill_edit_modal(index){
 
 	localStorage.setItem("edit_id", JSON.stringify(index));
 }
+
