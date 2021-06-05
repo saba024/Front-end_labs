@@ -5,6 +5,14 @@
 	text-decoration: none;
 }
 
+header
+{
+	width: 100%;
+	height: 80px;
+	padding: 10px 0;
+	background-color: #00FF00; 
+}
+
 .header {
     width: 100%;
     top: 0;
@@ -316,7 +324,7 @@ body {
 }
 
 
-.view_item .amount, .expense_amount{
+.view_item .amount, .expense_amount, .neg_amount{
 	position: absolute;
 	right: 0;
 	width: 150px;
@@ -326,7 +334,11 @@ body {
 	font-family: bold;
 }
 
-.vi_right img{
+.view_item .neg_amount{
+	color: red;
+}
+
+.vi_right .img{
 	position: absolute;
 	right: 5%;
 	width: 50px;
@@ -415,16 +427,22 @@ body {
 	position: relative;
 	background-color: white;
 	width: 30%;
-	height: 30%;
+	height: 40%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
-	margin: 5px;
+	margin: 1px;
 }
 
 .split_modal .title{
 	font-size: 16px;
+}
+
+.split_modal .save {
+	position: absolute;
+	top: 90%;
+	left: 1px;
 }
 
 
@@ -570,6 +588,20 @@ body {
 	left: 10px;
 }
 
+.modal .button_file{
+	position: absolute;
+	top: 77%;
+	right: 100px;
+	background-color: blue; /* Green */
+	border: none;
+	color: white;
+	padding: 7px 15px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+}
+
 
 
 .member_modal h2{
@@ -668,7 +700,15 @@ body {
 	border-color: #319612; 
 }
 
+.radio__input:unchecked + .radio__label:before{
+	border-color: #fff; 
+}
+
 .radio__input:checked + .radio__label:after{
+	opacity: 1;
+}
+
+.radio__input:unchecked + .radio__label:after{
 	opacity: 1;
 }
 
@@ -680,6 +720,86 @@ body {
 	text-align: center;
 	text-decoration: none;
 	font-size: 12px;
+}
+
+@media only screen
+    and (max-device-width : 500px) {
+
+    :root {
+      --main-border-radius: 50px;
+    }
+
+    .expense_amount{
+    	display: inline-block;
+    	position: flex;
+		right: 0;
+		width: 90px;
+		height: 10px;
+		color: green;
+		font-size: 25px;
+		font-family: bold;
+    }
+
+    .vi_right .img{
+    	display: flex;
+		position: absolute;
+		padding: 35px;
+		right: 5%;
+		width: 50px;
+		height: 50px;
+		cursor: pointer;
+	}
+
+	.view_item .amount, .neg_amount {
+    	position: absolute;
+		right: 0;
+		width: 90px;
+		height: 10px;
+		color: green;
+		font-size: 25px;
+		font-family: bold;
+	}
+
+	.member_modal{
+		width: 50%;
+		height: 43%;
+	}
+
+	.member_modal .name_input{
+		position: absolute;
+		top: 45%;
+		left: 10px;
+	}
+
+	.modal{
+		position: absolute;
+		background-color: white;
+		top: 10%;
+		width: 100%;
+		height: 90%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.modal-bg .split_modal{
+		position: absolute;
+		top: 12%;
+		right: 5%;
+		background-color: white;
+		width: 30%;
+		height: 40%;
+
+	}
+
+	.modal-bg .split_modal .save {
+		visibility: hidden;
+	}
+
+	.modal-bg .split_modal .modal-close {
+		visibility: hidden;
+	}
 }
 
 

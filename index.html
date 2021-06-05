@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./style.css">
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 </head>
 <body>
 	<header class="header">
@@ -13,10 +12,10 @@
                     SplitwiseClone
                 </a>
                 <div class="lang-menu">
-					<button class="btn"><img src="./united-kingdom.svg" alt="en"> English</button>
-					<button class="btn"><img src="./russia.svg" alt="ru"> Russian</button>
+					<button class="btn" onclick="change_lang()"><img src="./img/united-kingdom.svg" alt="en"> English</button>
+					<button class="btn" onclick="change_lang()"><img src="./img/russia.svg" alt="ru"> Russian</button>
 				</div>
-                <nav>
+                <nav id="authorisation">
                     <a class="nav__link" href="./login.html">Sign In</a>
                     <a class="nav__link" href="./register.html">Sign Up</a>
                 </nav>
@@ -24,201 +23,12 @@
         </div>
     </header>
 
-	<div class="top">
-		<div class="budget">
-			<div class="budget-title">
-				Username
-			</div>
-			<div class="budget-value">+50$</div>
-			<div class="budget-income">
-				<div class="budget-income-title">Income</div>
-				<div class="right">
-					<div class="budget-income-value">+50$</div>
-				</div>
-			</div>
-			<div class="budget-expenses">
-                    <div class="budget-expenses-title">Expenses</div>
-                    <div class="right">
-                        <div class="budget-expenses-value">150$</div>
-                    </div>
-            </div>
-		</div>
-	</div>
-
-	<div class="content">
-		<div class="tabs">
-			<nav class="tabs__items">
-				<button class="tabs_item" onclick="openOption(event, 'tab_01')"><span class="tab_name">Expenses</span></button>
-				<button class="tabs_item" onclick="openOption(event, 'tab_02')"><span class="tab_name2">Debts</span></a>
-				<button class="tabs_item" onclick="openOption(event, 'tab_03')"><span class="tab_name3">Members</span></a>
-				<button class="tabs_item" onclick="openOption(event, 'tab_04')"><span class="tab_name4">Activity</span></a>
-			</nav>
-			<div class="tabs__body">
-				<div id="tab_01" class="tabs__block">
-					<p><button class="add_expense">Add Expenses</button></p>
-					<ul class="view_wrap expense-list">
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./food.jpg" alt="food">
-							</div>
-							<div class="vi_right">
-								<p class="title">Burger</p>
-								<div class="expense_amount">50$</div>
-								<img src="./receipt.jpg" alt="receipt">
-								<p class="content">Bob -----> Greg, Bill</p>
-								<button class="btn_edit">Edit</button> 
-								<button class="btn_delete">Delete</button> 
-							</div>
-						</li>
-
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./house.jpg" alt="house">
-							</div>
-							<div class="vi_right">
-								<p class="title">Rent</p>
-								<div class="expense_amount">150$</div>
-								<img src="./receipt.jpg" alt="receipt">
-								<p class="content">Greg -----> Bob, Bill</p>
-								<button class="btn_edit">Edit</button> 
-								<button class="btn_delete">Delete</button> 
-							</div>
-						</li>
-					</ul>
-				</div>
-
-				<div id="tab_02" class="tabs__block">
-					<ul class="view_wrap expense-list">
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./person.png" alt="person">
-							</div>
-							<div class="vi_right">
-								<p class="title">Bill -> Bob</p>
-								<p class="debt_content">$50</p>
-								<button class="btn_edit">Settle Up</button> 
-							</div>
-						</li>
-
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./person.png" alt="person">
-							</div>
-							<div class="vi_right">
-								<p class="title">Bob -> Greg</p>
-								<p class="debt_content">$150</p>
-								<button class="btn_edit">Settle Up</button> 
-							</div>
-						</li>
-
-					</ul>
-				</div>
-
-				<div id="tab_03" class="tabs__block">
-					<p><button class="add_member">Add Member</button></p>
-					<ul class="view_wrap expense-list">
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./person.png" alt="person">
-							</div>
-							<div class="vi_right">
-								<p class="title">Bob</p>
-								<div class="amount">+50$</div>
-								<p class="content">spent 100$</p>
-								<button class="btn_edit">Edit</button> 
-								<button class="btn_delete">Delete</button> 
-							</div>
-						</li>
-					</ul>
-				</div>
-
-				<div id="tab_04" class="tabs__block">
-					<p class="activity">Recent activity</p>
-					<ul class="view_wrap expense-list">
-						<li class="view_item">
-							<div class="vi_left" >
-								<img src="./person.png" alt="person">
-							</div>
-							<div class="vi_right">
-								<p class="title">Bob added expense Burger($50)</p>
-								<p class="content">10.39 05/03/2021</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="text">Chooose option</div>
-	</div>
-
-	<div class="modal-bg">
-		<div class="modal">
-			<h2 class="title">Add new Expense</h2>
-			<span class="name">Who paid</span>
-			<div class="name-select" >
-				<select>
-					<option value="0">Greg</option>
-					<option value="1">Bob</option>
-					<option value="2">Bill</option>
-				</select>
-			</div>
-			<label class="amount" for="amount">Amount</label>
-			<input type="value" name="amount" class="amount_input" id="amount" placeholder="0$">
-			<label for="concept" class="concept">Concept</label>
-			<input type="text" name="concept" class="concept_input" id="concept" placeholder="Expense name">
-			<span class="category">Category</span>
-			<div class="category-select">
-				<select>
-					<option value="0">Food</option>
-					<option value="1">Home</option>
-					<option value="2">Tickets</option>
-				</select>
-			</div>
-			<span class="shared">Shared</span>
-			<button class="share_equally" id="shared">share equally</button>
-			<span class="add_receipt">Add Receipt</span> 
-			<form action="/action_page.php">
-				<input type="file" name="filename" class="file">
-			</form>
-			<button class="save">Save</button>
-			<span class="modal-close">X</span>
-		</div>
-
-		<div class="split_modal">
-			<h2 class="title">Choose split method</h2>
-			<div class="radio">
-				<input class="radio__input" type="radio" id="radio_1" name="Bob">
-				<label class="radio__label" for="radio_1">Bob</label>
-				<input type="value" name="amount_input" class="am_input" placeholder="0$">
-  			</div>
-  			<div class="radio">
-				<input class="radio__input" type="radio" id="radio_2" name="Bill">
-				<label class="radio__label" for="radio_2">Bill</label>
-				<input type="value" name="amount_input" class="am_input" placeholder="0$">
-  			</div>
-  			<div class="radio">
-				<input class="radio__input" type="radio" id="radio_3" name="Greg">
-				<label class="radio__label" for="radio_3">Greg</label>
-				<input type="value" name="amount_input" class="am_input" placeholder="0$">
-  			</div>
-			<button class="save">Save</button>
-			<span class="modal-close">X</span>
-		</div>
-
-	</div>
-
-	<div class="modal1-bg">
-		<div class="member_modal">
-			<h2>Add Member</h2>
-			<label class="member">Name</label>
-			<input type="name" name="member_name" class="name_input" placeholder="Name">
-			<button class="save">Save</button>
-			<span class="modal1-close">X</span>
-		</div>
-	</div>
-
-	<script src="./app.js"></script>
+	<p data-translate="greet" style="text-align: center; margin: 10px;" >To start with splitapp firts sign in </p>
+    <a data-translate="login" style="position: absolute; left: 50%; margin: 10px;" class="nav__link" href="./login.html">Sign In</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/translate.js"></script>
 
 </body>
 </html>
+
+

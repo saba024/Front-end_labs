@@ -1,14 +1,14 @@
 body{
 	margin: 0;
 	padding: 0;
-	background-image: url(./pict1.jpg);
+	background-image: url(/Users/saba/SplitwiseClone/pict1.jpg);
 	background-size: cover;
 	font-family: sans-serif; 
 }
 
 .loginbox{
 	width: 320px;
-	height: 420px;
+	height: 550px;
 	background: white;
 	color: #fff;
 	top: 50%;
